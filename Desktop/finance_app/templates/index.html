@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block title %}
+
+    Home
+
+{% endblock %}
+
+{% block main %}
+
+<table style = "width : 100%">
+    <tr>
+        <th>SYMBOL</th>
+        <th>SHARES</th>
+        <th>PRICE</th>
+        <th>TOTAL</th>
+    </tr>
+
+    {% for stock in portfolio %}
+    <tr>
+        <td>{{stock.symbol}}</td>
+        <td>{{stock.shares}}</td>
+        <td>{{stock.price | usd}}</td>
+        <td>{{stock.total | usd}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<table style ="width : 160%">
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <th>CASH</th>
+    </tr>
+
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>{{cash}}</td>
+    </tr>
+</table>
+
+<div>
+    <a href = "{{ url_for('deposit') }}">
+    <button class = "btn btn-primary" type = "button">Deposit Cash</button>
+    </a>
+</div>
+
+{% endblock %}
+
+
+
